@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: b28495b8c0915d04e9f9ea251bdb7328
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Mercy Christole
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: af83d2d129d89ea45a178769f6e2b7f8, type: 3}
+  - {fileID: 12800000, guid: ca94197b1bee99e4aad9160bbab06f38, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
