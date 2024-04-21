@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
      private void Start()
     {
         currentHealth = maxHealth;
-        InvokeRepeating("IncrementSliderValue", initialIncrementDelay, incrementInterval);
+        //InvokeRepeating("IncrementSliderValue", initialIncrementDelay, incrementInterval);
     }
 
     public void TakeDamage(int damage)

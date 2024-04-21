@@ -150,13 +150,39 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("Blocking");
     }
 
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     Debug.Log("Collider Called: " + other.tag);
+
+    //     if (other.CompareTag("Enemy"))
+    //     {
+    //         Debug.Log("WE ARE HERE");
+    //         EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+
+    //         Debug.Log("enemyHealth:" + enemyHealth);
+
+    //         if (enemyHealth != null)
+    //         {
+    //             Debug.Log("Enemy Taking Damage");
+    //             enemyHealth.TakeDamage(punchDamage);
+    //         }
+    //     }
+    // }
+
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("This Collider Called: " + this.tag);
         Debug.Log("Collider Called: " + other.tag);
 
         if (other.CompareTag("Enemy"))
         {
-            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            Debug.Log("WE ARE HERE");
+            
+            // Access EnemyHealth component from the root GameObject
+            EnemyHealth enemyHealth = other.transform.root.GetComponent<EnemyHealth>();
+
+            Debug.Log("enemyHealth:" + enemyHealth);
+
             if (enemyHealth != null)
             {
                 Debug.Log("Enemy Taking Damage");

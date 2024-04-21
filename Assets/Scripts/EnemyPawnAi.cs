@@ -10,6 +10,8 @@ public class EnemyPawnAi : MonoBehaviour
 
     Animator animator;
 
+    public int punchDamage = 10;
+
     public LayerMask whatIsGround, whatIsPlayer;
 
     public float health;
@@ -100,6 +102,7 @@ public class EnemyPawnAi : MonoBehaviour
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+
     private void ResetAttack()
     {
         alreadyAttacked = false;
@@ -111,6 +114,7 @@ public class EnemyPawnAi : MonoBehaviour
 
         if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
     }
+
     private void DestroyEnemy()
     {
         Destroy(gameObject);
@@ -122,5 +126,22 @@ public class EnemyPawnAi : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Access EnemyHealth component from the root GameObject
+            PlayerHealth playerHealth = other.transform.root.GetComponent<PlayerHealth>();
+
+            Debug.Log("playerHealth:" + playerHealth);
+
+            if (playerHealth != null)
+            {
+                Debug.Log("Player Taking Damage");
+                playerHealth.TakeDamage(punchDamage);
+            }
+        }
     }
 }

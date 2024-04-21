@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     private int currentHealth;
-    public Slider healthSlider;
+    public Scrollbar healthScrollbar;
     public float initialIncrementDelay = 1f;
     public float incrementInterval = 1f;
     public float incrementAmount = 1.0f;
@@ -18,17 +18,23 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
-        Console.WriteLine("Hello");
-        InvokeRepeating("IncrementSliderValue", initialIncrementDelay, incrementInterval);
+        // InvokeRepeating("IncrementSliderValue", initialIncrementDelay, incrementInterval);
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         
+        Debug.Log("Player  HeaLTH: " + currentHealth);
+
         float normalisedCurrentHealth = ConvertToNormalizedValue(currentHealth);
 
-        healthSlider.value =normalisedCurrentHealth;
+        Debug.Log("Player  HeaLTH scrollar: " + normalisedCurrentHealth);
+
+        // healthScrollbar.value = normalisedCurrentHealth;
+        // Update the fill amount of the health scrollbar
+        healthScrollbar.GetComponent<Image>().fillAmount = normalisedCurrentHealth;
+
 
         if (currentHealth <= 0)
         {
