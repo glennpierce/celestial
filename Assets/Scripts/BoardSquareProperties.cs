@@ -25,4 +25,16 @@ public class BoardSquareProperties : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("GAME: " + other);
+
+        if (other.CompareTag("Enemy"))
+        {
+            // EnemyPawnAi enemy = other.GetComponent
+            Debug.Log("hello");
+        }
+    }
+
 }

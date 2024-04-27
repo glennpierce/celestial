@@ -25,16 +25,13 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         
-        Debug.Log("Player  HeaLTH: " + currentHealth);
-
         float normalisedCurrentHealth = ConvertToNormalizedValue(currentHealth);
 
-        Debug.Log("Player  HeaLTH scrollar: " + normalisedCurrentHealth);
+        Debug.Log("Player Health scrollar: " + normalisedCurrentHealth);
 
         // healthScrollbar.value = normalisedCurrentHealth;
         // Update the fill amount of the health scrollbar
         healthScrollbar.GetComponent<Image>().fillAmount = normalisedCurrentHealth;
-
 
         if (currentHealth <= 0)
         {

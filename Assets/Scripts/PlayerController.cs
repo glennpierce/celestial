@@ -13,12 +13,6 @@ public class PlayerController : MonoBehaviour
 
     public int punchDamage = 10;
 
-    // [Header("Keybinds")]
-    // public KeyCode jumpKey = KeyCode.Space;
-    // public KeyCode attackKey = KeyCode.Mouse0;
-    // public KeyCode blockKey = KeyCode.Mouse1;
-    // public KeyCode runKey = KeyCode.LeftShift;
-
     // Name of the input axis/button for attack
     public string attackInput = "Attack";
     public string blockInput = "Block";
@@ -144,48 +138,28 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("Capoeira");
     }
 
-
     private void SetBlocking()
     {
         animator.SetTrigger("Blocking");
     }
 
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     Debug.Log("Collider Called: " + other.tag);
-
-    //     if (other.CompareTag("Enemy"))
-    //     {
-    //         Debug.Log("WE ARE HERE");
-    //         EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-
-    //         Debug.Log("enemyHealth:" + enemyHealth);
-
-    //         if (enemyHealth != null)
-    //         {
-    //             Debug.Log("Enemy Taking Damage");
-    //             enemyHealth.TakeDamage(punchDamage);
-    //         }
-    //     }
-    // }
-
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("This Collider Called: " + this.tag);
-        Debug.Log("Collider Called: " + other.tag);
+        // Debug.Log("This Collider Called: " + this.tag);
+        // Debug.Log("Collider Called: " + other.tag);
 
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("WE ARE HERE");
-            
             // Access EnemyHealth component from the root GameObject
-            EnemyHealth enemyHealth = other.transform.root.GetComponent<EnemyHealth>();
+            // EnemyHealth enemyHealth = other.transform.root.GetComponent<EnemyHealth>();
+            EnemyHealth enemyHealth = other.GetComponentInParent<EnemyHealth>();
 
-            Debug.Log("enemyHealth:" + enemyHealth);
+            Debug.Log("other: " + other + " enemyHealth HERE :" + enemyHealth);
 
             if (enemyHealth != null)
             {
-                Debug.Log("Enemy Taking Damage");
+                // enemyHealth.healthSlider = 
+                Debug.Log("Enemy Taking Damage " + "punchDamage: " + punchDamage);
                 enemyHealth.TakeDamage(punchDamage);
             }
         }

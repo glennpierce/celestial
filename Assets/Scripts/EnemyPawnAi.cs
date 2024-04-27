@@ -10,7 +10,7 @@ public class EnemyPawnAi : MonoBehaviour
 
     Animator animator;
 
-    public int punchDamage = 10;
+    public int punchDamage = 1;
 
     public LayerMask whatIsGround, whatIsPlayer;
 
@@ -30,6 +30,8 @@ public class EnemyPawnAi : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    private BoardSquareProperties.Colour currentSquareColour;
+
     private void Awake()
     {
         // player = GameObject.Find("PlayerObj").transform;
@@ -39,6 +41,9 @@ public class EnemyPawnAi : MonoBehaviour
 
     private void Update()
     {
+        // Debug.Log("sightRange:" + sightRange);
+        // Debug.Log("attackRange:" + attackRange);
+
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -50,16 +55,20 @@ public class EnemyPawnAi : MonoBehaviour
 
     private void Patroling()
     {
-        if (!walkPointSet) SearchWalkPoint();
+        if (!walkPointSet) {
+            SearchWalkPoint();
+        }
 
-        if (walkPointSet)
+        if (walkPointSet) {
             agent.SetDestination(walkPoint);
+        }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        //Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
+        // Walkpoint reached
+        if (distanceToWalkPoint.magnitude < 1f) {
             walkPointSet = false;
+        }
     }
 
     private void SearchWalkPoint()
@@ -70,14 +79,15 @@ public class EnemyPawnAi : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)) {
             walkPointSet = true;
+        }
     }
 
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
-        Debug.Log("Chasing Player");
+        // Debug.Log("Chasing Player");
         animator.SetTrigger("Chase");
     }
 
@@ -108,12 +118,12 @@ public class EnemyPawnAi : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
+    // public void TakeDamage(int damage)
+    // {
+    //     health -= damage;
 
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
+    //     if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+    // }
 
     private void DestroyEnemy()
     {
@@ -130,18 +140,30 @@ public class EnemyPawnAi : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("EnemyPawnAi OnTriggerEnter: " + this);   
+
         if (other.CompareTag("Player"))
         {
             // Access EnemyHealth component from the root GameObject
             PlayerHealth playerHealth = other.transform.root.GetComponent<PlayerHealth>();
 
-            Debug.Log("playerHealth:" + playerHealth);
+            // Debug.Log("playerHealth:" + playerHealth);
 
             if (playerHealth != null)
             {
-                Debug.Log("Player Taking Damage");
+                Debug.Log("Player Taking Damage punchDamage: " + punchDamage);
                 playerHealth.TakeDamage(punchDamage);
             }
         }
+
+        // if (this.CompareTag("ChessBoardSquare"))
+        // {
+        //     BoardSquareProperties boardSquareProperties = this.GetComponent<BoardSquareProperties>();
+
+        //     this.currentSquareColour = boardSquareProperties.selectedColour;
+
+        //     Debug.Log("currentSquareColour: " + this.currentSquareColour);           
+        // }
+
     }
 }

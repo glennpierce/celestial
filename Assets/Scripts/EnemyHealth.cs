@@ -26,6 +26,7 @@ public class EnemyHealth : MonoBehaviour
 
         float normalisedCurrentHealth = ConvertToNormalizedValue(currentHealth);
 
+        Debug.Log("EnemyHealth Taking Damage: " + normalisedCurrentHealth + " healthSlider: " + healthSlider + " damage:" + damage);
         healthSlider.value = normalisedCurrentHealth;
 
         if (currentHealth <= 0)
@@ -33,34 +34,6 @@ public class EnemyHealth : MonoBehaviour
             Die();
         }
     }
-
-    // private void Die()
-    // {
-    //     // Handle enemy death (e.g., destroy enemy GameObject)
-    //     Destroy(gameObject);
-    // }
-
-
-    // public void Die()
-    // {
-    //     // Check if the particle system prefab is assigned
-    //     if (deathParticlesPrefab != null)
-    //     {
-    //         // Instantiate the particle system at the enemy's position
-    //         Debug.Log("DYING");
-
-    //         GameObject particlesInstance = Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
-            
-    //         // Optionally, parent the particle system instance to the same parent as the enemy
-    //         particlesInstance.transform.parent = transform.parent;
-            
-    //         // Destroy the particle system after its duration (if needed)
-    //         Destroy(particlesInstance, particlesInstance.GetComponent<ParticleSystem>().main.duration);
-    //     }
-
-    //     // Handle other death-related logic (e.g., play death animation, deactivate GameObject, etc.)
-    //     Destroy(gameObject);
-    // }
 
     private float ConvertToNormalizedValue(float value)
     {

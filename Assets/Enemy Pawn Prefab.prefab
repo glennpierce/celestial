@@ -46,27 +46,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 2.6121151
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2.6121151
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 2.6121151
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.18759
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.21037
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.060013
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalRotation.w
@@ -151,6 +151,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
+    - {fileID: -8700617353114198275, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
@@ -168,6 +169,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2706111595999788234}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4468262892277112069}
     - targetCorrespondingSourceObject: {fileID: 459526902348571397, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5844313986454545316}
@@ -225,8 +229,8 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 1
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2995363
@@ -247,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 4497674827211735705}
   player: {fileID: 0}
-  punchDamage: 10
+  punchDamage: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -256,10 +260,10 @@ MonoBehaviour:
     m_Bits: 64
   health: 120
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 5
+  walkPointRange: 2
   timeBetweenAttacks: 0.5
-  sightRange: 20
-  attackRange: 9
+  sightRange: 3
+  attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!195 &4497674827211735705
@@ -324,3 +328,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!54 &4468262892277112069
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2189929792102068486}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

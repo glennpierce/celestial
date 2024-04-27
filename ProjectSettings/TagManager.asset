@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - ChessBoardSquare
+  - EnemyHealthBar
   layers:
   - Default
   - TransparentFX
