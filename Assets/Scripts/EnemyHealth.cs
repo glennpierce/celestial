@@ -26,7 +26,7 @@ public class EnemyHealth : MonoBehaviour
 
         float normalisedCurrentHealth = ConvertToNormalizedValue(currentHealth);
 
-        Debug.Log("EnemyHealth Taking Damage: " + normalisedCurrentHealth + " healthSlider: " + healthSlider + " damage:" + damage);
+        // Debug.Log("EnemyHealth Taking Damage: " + normalisedCurrentHealth + " healthSlider: " + healthSlider + " damage:" + damage);
         healthSlider.value = normalisedCurrentHealth;
 
         if (currentHealth <= 0)

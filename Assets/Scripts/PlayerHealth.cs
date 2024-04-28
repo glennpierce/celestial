@@ -15,6 +15,12 @@ public class PlayerHealth : MonoBehaviour
     public float incrementInterval = 1f;
     public float incrementAmount = 1.0f;
 
+    // Define delegate type for the event
+    public delegate void PlayerDeathEventHandler();
+
+    // Declare event of the delegate type
+    public event PlayerDeathEventHandler OnPlayerDeath;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -27,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
         
         float normalisedCurrentHealth = ConvertToNormalizedValue(currentHealth);
 
-        Debug.Log("Player Health scrollar: " + normalisedCurrentHealth);
+        // Debug.Log("Player Health scrollar: " + normalisedCurrentHealth);
 
         // healthScrollbar.value = normalisedCurrentHealth;
         // Update the fill amount of the health scrollbar
@@ -42,7 +48,11 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         // Handle enemy death (e.g., destroy enemy GameObject)
-        Destroy(gameObject);
+
+        // Raise the event when the player dies
+        OnPlayerDeath?.Invoke();
+
+        // Destroy(gameObject);
     }
 
     private float ConvertToNormalizedValue(float value)
@@ -55,21 +65,4 @@ public class PlayerHealth : MonoBehaviour
 
         return normalizedValue;
     }
-
-    // private void IncrementSliderValue()
-    // {
-    //     healthSlider.value -= incrementAmount;
-
-    //     Console.WriteLine(healthSlider.value);
-
-    //     // Ensure the slider value doesn't exceed its maximum value
-    //     if (healthSlider.value <= 0.0f)
-    //     {
-    //         healthSlider.value = 0.0f;
-    //         CancelInvoke("IncrementSliderValue");
-
-    //         // Load and show the scene by name
-    //         SceneManager.LoadScene("Fail");
-    //     }
-    // }
 }

@@ -10,7 +10,7 @@ public class EnemyPawnAi : MonoBehaviour
 
     Animator animator;
 
-    public int punchDamage = 1;
+    public int punchDamage = 10;
 
     public LayerMask whatIsGround, whatIsPlayer;
 
@@ -140,10 +140,13 @@ public class EnemyPawnAi : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("EnemyPawnAi OnTriggerEnter: " + this);   
+        Debug.Log("EnemyPawnAi OnTriggerEnter:" + this + " this.currentSquareColour:" + this.currentSquareColour);   
+
+        // RightHandCollider
 
         if (other.CompareTag("Player"))
         {
+            /*
             // Access EnemyHealth component from the root GameObject
             PlayerHealth playerHealth = other.transform.root.GetComponent<PlayerHealth>();
 
@@ -153,6 +156,21 @@ public class EnemyPawnAi : MonoBehaviour
             {
                 Debug.Log("Player Taking Damage punchDamage: " + punchDamage);
                 playerHealth.TakeDamage(punchDamage);
+            }
+            */
+
+            // Access EnemyHealth component from the root GameObject
+            // EnemyHealth enemyHealth = other.transform.root.GetComponent<EnemyHealth>();
+            // EnemyPawnAi enemy = other.GetComponentInParent<EnemyPawnAi>();
+            EnemyHealth enemyHealth = this.GetComponent<EnemyHealth>();
+
+            // Debug.Log("other: " + other + " enemyHealth HERE :" + enemyHealth + " enemy.currentSquareColour: " + enemy.currentSquareColour);
+
+            if (enemyHealth != null && this.currentSquareColour == BoardSquareProperties.Colour.White)
+            {
+                // enemyHealth.healthSlider = 
+                Debug.Log("Enemy Taking Damage " + "punchDamage: " + punchDamage);
+                enemyHealth.TakeDamage(punchDamage);
             }
         }
     }

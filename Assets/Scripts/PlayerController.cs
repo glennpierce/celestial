@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float airMultiplier;
     bool readyToJump;
 
-    public int punchDamage = 10;
+    public int punchDamage = 1;
 
     // Name of the input axis/button for attack
     public string attackInput = "Attack";
@@ -28,8 +28,11 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody rb;
     Animator animator;
+    PlayerHealth playerHealth;
 
     Vector3 moveDirection; // Declare moveDirection as a member variable
+
+    bool dead = false;
 
     private void Start()
     {
@@ -38,6 +41,12 @@ public class PlayerController : MonoBehaviour
         rb.freezeRotation = true;
 
         readyToJump = true;
+
+        playerHealth = this.GetComponent<PlayerHealth>();
+
+        // Debug.Log("playerHealth: " + playerHealth);
+        // Subscribe to the OnPlayerDeath event
+        playerHealth.OnPlayerDeath += HandlePlayerDeath;
     }
 
     private void Update()
@@ -84,8 +93,22 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
     }
 
+    private void HandlePlayerDeath()
+    {
+        // Handle player death here (e.g., game over logic)
+        Debug.Log("Player has died!");
+
+        animator.SetTrigger("Death");
+
+        this.dead = true;
+    }
+
     private void MovePlayer()
     {
+        if (dead) {
+            return;
+        }
+
         // Get the forward and right vectors of the camera
         Vector3 cameraForward = Camera.main.transform.forward;
         Vector3 cameraRight = Camera.main.transform.right;
@@ -118,6 +141,10 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        if (dead) {
+            return;
+        }
+
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
@@ -129,7 +156,27 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        animator.SetTrigger("Punching");
+        if (dead) {
+            return;
+        }
+
+        // animator.SetTrigger("LeftPunch");
+
+        // Generate a random number (0 or 1) to determine left or right punch
+        int randomIndex = Random.Range(0, 2);
+
+        // Trigger the corresponding animation based on the random number
+        if (randomIndex == 0)
+        {
+            //Debug.Log("Left Punch");
+            animator.SetTrigger("LeftPunch");
+        }
+        else
+        {
+            //Debug.Log("Right Punch");
+            animator.SetTrigger("RightPunch");
+        }
+
     }
 
     [ContextMenu("Capoeira")]
@@ -145,10 +192,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        /*
         // Debug.Log("This Collider Called: " + this.tag);
-        // Debug.Log("Collider Called: " + other.tag);
+        Debug.Log("Player Collider Called: " + other.tag);
 
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("EnemyPawn"))
         {
             // Access EnemyHealth component from the root GameObject
             // EnemyHealth enemyHealth = other.transform.root.GetComponent<EnemyHealth>();
@@ -164,5 +212,24 @@ public class PlayerController : MonoBehaviour
                 enemyHealth.TakeDamage(punchDamage);
             }
         }
+
+        */
+
+
+        Debug.Log("Player OnTrigger other: " + other);
+
+        if (other.CompareTag("EnemyPawn"))
+        {
+            // PlayerHealth playerHealth = this.GetComponent<PlayerHealth>();
+
+            // Debug.Log("playerHealth:" + playerHealth);
+
+            if (playerHealth != null)
+            {
+                //Debug.Log("Player Taking Damage punchDamage: " + punchDamage);
+                playerHealth.TakeDamage(punchDamage);
+            }
+        }
+
     }
 }

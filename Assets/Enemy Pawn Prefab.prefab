@@ -152,6 +152,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: EnemyPawn
       objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
+      propertyPath: m_TagString
+      value: EnemyPawnHead
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
@@ -237,10 +241,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2995363
-  m_Height: 1.3132817
+  m_Radius: 0.25479478
+  m_Height: 1.1553372
   m_Direction: 1
-  m_Center: {x: 0.13879482, y: -0.15664086, z: -0.061668865}
+  m_Center: {x: 0.07756242, y: -0.07766887, z: -0.0027301009}
 --- !u!114 &3248908112041107786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 4497674827211735705}
   player: {fileID: 0}
-  punchDamage: 1
+  punchDamage: 10
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8

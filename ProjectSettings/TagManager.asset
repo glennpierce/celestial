@@ -8,6 +8,7 @@ TagManager:
   - ChessBoardSquare
   - EnemyHealthBar
   - EnemyPawn
+  - EnemyPawnHead
   layers:
   - Default
   - TransparentFX
