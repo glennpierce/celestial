@@ -155,15 +155,5 @@ public class EnemyPawnAi : MonoBehaviour
                 playerHealth.TakeDamage(punchDamage);
             }
         }
-
-        // if (this.CompareTag("ChessBoardSquare"))
-        // {
-        //     BoardSquareProperties boardSquareProperties = this.GetComponent<BoardSquareProperties>();
-
-        //     this.currentSquareColour = boardSquareProperties.selectedColour;
-
-        //     Debug.Log("currentSquareColour: " + this.currentSquareColour);           
-        // }
-
     }
 }
