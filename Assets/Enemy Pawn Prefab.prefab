@@ -46,27 +46,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.6121151
+      value: 2.8420172
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.6121151
+      value: 2.8420172
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.6121151
+      value: 2.8420172
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.18759
+      value: -0.23396
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.21037
+      value: 0.043791
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.060013
+      value: 0.059618
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_LocalRotation.w
@@ -142,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 459526902348571397, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: EnemyPawnHead
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_Name
@@ -153,8 +153,12 @@ PrefabInstance:
       value: EnemyPawn
       objectReference: {fileID: 0}
     - target: {fileID: 7036213049465896255, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       propertyPath: m_TagString
-      value: EnemyPawnHead
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -208,10 +212,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.37995672
+  m_Height: 1.0598875
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.02197235, y: -0.14783752, z: -0.00013001029}
 --- !u!4 &1526686358871583676 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
@@ -238,13 +242,13 @@ CapsuleCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25479478
+  m_Radius: 0.1908848
   m_Height: 1.1553372
   m_Direction: 1
-  m_Center: {x: 0.07756242, y: -0.07766887, z: -0.0027301009}
+  m_Center: {x: 0.069263116, y: -0.07766889, z: -0.002730097}
 --- !u!114 &3248908112041107786
 MonoBehaviour:
   m_ObjectHideFlags: 0

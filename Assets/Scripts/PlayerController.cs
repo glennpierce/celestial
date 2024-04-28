@@ -218,7 +218,7 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log("Player OnTrigger other: " + other);
 
-        if (other.CompareTag("EnemyPawn"))
+        if (other.CompareTag("EnemyPawnHead"))
         {
             // PlayerHealth playerHealth = this.GetComponent<PlayerHealth>();
 
