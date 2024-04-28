@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6654186971896170933}
   m_Layer: 0
   m_Name: Enemy Pawn Prefab
-  m_TagString: Untagged
+  m_TagString: EnemyPawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,9 +181,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2706111595999788234}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4468262892277112069}
     - targetCorrespondingSourceObject: {fileID: 459526902348571397, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5844313986454545316}
@@ -241,14 +238,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 1
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1908848
+  m_Radius: 0.30525059
   m_Height: 1.1553372
   m_Direction: 1
-  m_Center: {x: 0.069263116, y: -0.07766889, z: -0.002730097}
+  m_Center: {x: 0.079727754, y: -0.07766887, z: -0.0027300944}
 --- !u!114 &3248908112041107786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,8 +271,8 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 2
   timeBetweenAttacks: 0.5
-  sightRange: 3
-  attackRange: 2
+  sightRange: 5
+  attackRange: 3
   playerInSightRange: 0
   playerInAttackRange: 0
   currentSquareColour: 0
@@ -341,30 +338,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!54 &4468262892277112069
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2189929792102068486}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0

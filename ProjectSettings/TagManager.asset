@@ -9,6 +9,7 @@ TagManager:
   - EnemyHealthBar
   - EnemyPawn
   - EnemyPawnHead
+  - PlayerDamageColliderTag
   layers:
   - Default
   - TransparentFX

@@ -100,7 +100,7 @@ public class SpawnManager : MonoBehaviour
         float offsetZ = Random.Range(-maxDistanceFromPlayer, maxDistanceFromPlayer);
 
         // Calculate the random point relative to the player's position
-        randomPoint = player.position + new Vector3(offsetX, 0f, offsetZ);
+        randomPoint = player.position + new Vector3(offsetX, -1.5f, offsetZ);
 
         return randomPoint;
     }

@@ -118,13 +118,6 @@ public class EnemyPawnAi : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    // public void TakeDamage(int damage)
-    // {
-    //     health -= damage;
-
-    //     if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    // }
-
     private void DestroyEnemy()
     {
         Destroy(gameObject);
@@ -140,11 +133,9 @@ public class EnemyPawnAi : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("EnemyPawnAi OnTriggerEnter:" + this + " this.currentSquareColour:" + this.currentSquareColour);   
+        Debug.Log("EnemyPawnAi OnTriggerEnter this" + this +  " other: " + other + " this.currentSquareColour:" + this.currentSquareColour);   
 
-        // RightHandCollider
-
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerDamageColliderTag"))
         {
             /*
             // Access EnemyHealth component from the root GameObject
@@ -164,9 +155,10 @@ public class EnemyPawnAi : MonoBehaviour
             // EnemyPawnAi enemy = other.GetComponentInParent<EnemyPawnAi>();
             EnemyHealth enemyHealth = this.GetComponent<EnemyHealth>();
 
-            // Debug.Log("other: " + other + " enemyHealth HERE :" + enemyHealth + " enemy.currentSquareColour: " + enemy.currentSquareColour);
+            Debug.Log("EnemyPornAI OnTriggerEnter: " + this + " this.currentSquareColour: " + this.currentSquareColour);
 
-            if (enemyHealth != null && this.currentSquareColour == BoardSquareProperties.Colour.White)
+            // if (enemyHealth != null && this.currentSquareColour == BoardSquareProperties.Colour.White)
+            if (enemyHealth != null)
             {
                 // enemyHealth.healthSlider = 
                 Debug.Log("Enemy Taking Damage " + "punchDamage: " + punchDamage);
