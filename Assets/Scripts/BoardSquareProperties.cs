@@ -12,7 +12,7 @@ public class BoardSquareProperties : MonoBehaviour
     }
 
     // Public variable to store the selected color
-    public Colour selectedColour;
+    public BoardSquareProperties.Colour selectedColour = BoardSquareProperties.Colour.Black;
 
     // Start is called before the first frame update
     void Start()
@@ -30,10 +30,12 @@ public class BoardSquareProperties : MonoBehaviour
     {
         Debug.Log("GAME: " + other);
 
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("EnemyPawn"))
         {
-            // EnemyPawnAi enemy = other.GetComponent
-            Debug.Log("hello");
+            EnemyPawnAi enemy = other.GetComponent<EnemyPawnAi>();
+            enemy.currentSquareColour = this.selectedColour;
+            //Debug.Log("enemy.currentSquareColour setting: " + enemy.currentSquareColour);
+            //Debug.Log("hello");
         }
     }
 

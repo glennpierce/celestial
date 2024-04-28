@@ -148,6 +148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyPawn
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
+      propertyPath: m_TagString
+      value: EnemyPawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: 49dc4694815b43a439181b335aaeb169, type: 3}
@@ -266,6 +270,7 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  currentSquareColour: 0
 --- !u!195 &4497674827211735705
 NavMeshAgent:
   m_ObjectHideFlags: 0

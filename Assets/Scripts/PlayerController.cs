@@ -152,11 +152,12 @@ public class PlayerController : MonoBehaviour
         {
             // Access EnemyHealth component from the root GameObject
             // EnemyHealth enemyHealth = other.transform.root.GetComponent<EnemyHealth>();
+            EnemyPawnAi enemy = other.GetComponentInParent<EnemyPawnAi>();
             EnemyHealth enemyHealth = other.GetComponentInParent<EnemyHealth>();
 
-            Debug.Log("other: " + other + " enemyHealth HERE :" + enemyHealth);
+            Debug.Log("other: " + other + " enemyHealth HERE :" + enemyHealth + " enemy.currentSquareColour: " + enemy.currentSquareColour);
 
-            if (enemyHealth != null)
+            if (enemyHealth != null && enemy.currentSquareColour == BoardSquareProperties.Colour.White)
             {
                 // enemyHealth.healthSlider = 
                 Debug.Log("Enemy Taking Damage " + "punchDamage: " + punchDamage);

@@ -30,7 +30,7 @@ public class EnemyPawnAi : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-    private BoardSquareProperties.Colour currentSquareColour;
+    public BoardSquareProperties.Colour currentSquareColour;
 
     private void Awake()
     {
