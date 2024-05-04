@@ -30,7 +30,7 @@ public class BoardSquareProperties : MonoBehaviour
     {
         if (other.CompareTag("EnemyPawn"))
         {
-            EnemyPawnAi enemy = other.GetComponent<EnemyPawnAi>();
+            EnemyAi enemy = other.GetComponent<EnemyAi>();
             enemy.currentSquareColour = this.selectedColour;
         }
     }

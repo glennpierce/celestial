@@ -78,10 +78,10 @@ public class PlayerController : MonoBehaviour
         }
 
         // Block input
-        if (Input.GetButtonDown(blockInput))
-        {
-            SetBlocking();
-        }
+        // if (Input.GetButtonDown(blockInput))
+        // {
+        //     SetBlocking();
+        // }
 
         // Animations
         float speedMultiplier = isRunning ? 0.6f : 0.4f;
@@ -101,6 +101,12 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("Death");
 
         this.dead = true;
+        //animator.enabled = false;
+    }
+
+    public void DisableAnimator()
+    {
+        animator.enabled = false;
     }
 
     private void MovePlayer()
@@ -147,6 +153,7 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+         animator.SetTrigger("Jump");
     }
 
     private void ResetJump()

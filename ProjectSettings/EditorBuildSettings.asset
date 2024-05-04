@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: 3825482d3c3ff604c9e1b8c1a7329c52
+  - enabled: 1
+    path: Assets/Scenes/CelestialFail.unity
+    guid: 11121e42efa78124092d2e5fab54f4fe
   m_configObjects: {}

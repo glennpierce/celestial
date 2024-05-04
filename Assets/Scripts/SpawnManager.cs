@@ -61,7 +61,7 @@ public class SpawnManager : MonoBehaviour
                 // Debug.Log("Spawn Player: " + player);
 
                 //EnemyPawnAi enemyAI = newEnemy.GetComponent<EnemyPawnAi>();
-                EnemyPawnAi enemyAI = newEnemy.GetComponentInChildren<EnemyPawnAi>();
+                EnemyAi enemyAI = newEnemy.GetComponentInChildren<EnemyAi>();
 
                 // Debug.Log("EnemyPawnAi: " + enemyAI);
 
