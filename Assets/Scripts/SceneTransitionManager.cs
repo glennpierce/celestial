@@ -6,8 +6,8 @@ using System.Collections;
 public class SceneTransitionManager : MonoBehaviour
 {
     public string fadePanelName = "FadePanel"; // Name of the fade panel GameObject
-    public float fadeDuration = 2f;
-    public float delayBeforeFadeIn = 2f;
+    public float fadeDuration = 3f;
+    public float delayBeforeFadeIn = 5f;
 
     private GameObject fadePanel;
 

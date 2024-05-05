@@ -1,5 +1,6 @@
 ﻿
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class EnemyAi : MonoBehaviour
@@ -32,11 +33,24 @@ public class EnemyAi : MonoBehaviour
 
     public BoardSquareProperties.Colour currentSquareColour;
 
+    private Slider healthSlider; // Reference to the player's transform
+
     private void Awake()
     {
         // player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
+        healthSlider = this.GetComponentInParent<Slider>();
+
+// EnemyPawnAi enemy = other.GetComponentInParent<EnemyPawnAi>();
+
+//         while (healthSlider == null)
+//         {
+//             // healthSlider = GameObject.Fi GetComponentInParent<Slider>("HealthSlider");
+//             healthSlider = this.GetComponentInParent<Slider>();
+//             yield return null; // Wait for the next frame
+//         }
     }
 
     private void Update()
@@ -154,6 +168,7 @@ public class EnemyAi : MonoBehaviour
             // EnemyHealth enemyHealth = other.transform.root.GetComponent<EnemyHealth>();
             // EnemyPawnAi enemy = other.GetComponentInParent<EnemyPawnAi>();
             EnemyHealth enemyHealth = this.GetComponent<EnemyHealth>();
+            // enemyHealth.healthSlider = this.healthSlider;
 
             Debug.Log("EnemyPornAI OnTriggerEnter: " + this + " this.currentSquareColour: " + this.currentSquareColour);
 

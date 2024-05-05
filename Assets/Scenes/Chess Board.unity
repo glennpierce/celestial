@@ -13327,7 +13327,7 @@ GameObject:
   - component: {fileID: 900590273}
   m_Layer: 5
   m_Name: Slider
-  m_TagString: Untagged
+  m_TagString: HealthSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17594,6 +17594,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346376857d4491c4789b5971500b3433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadePanelName: FadePanel
+  fadeDuration: 3
+  delayBeforeFadeIn: 5
 --- !u!1 &1404778175
 GameObject:
   m_ObjectHideFlags: 0
@@ -20839,7 +20842,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843784173}
-  m_LocalRotation: {x: 0.12218325, y: -0.000000017077465, z: 0.0000000021023316, w: 0.9925076}
+  m_LocalRotation: {x: 0.12218327, y: 0.000000017077465, z: -0.0000000021023319, w: 0.9925076}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
