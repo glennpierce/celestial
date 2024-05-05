@@ -43,6 +43,8 @@ public class EnemyAi : MonoBehaviour
 
         healthSlider = this.GetComponentInParent<Slider>();
 
+        Debug.Log("healthSlider=" + healthSlider);
+
 // EnemyPawnAi enemy = other.GetComponentInParent<EnemyPawnAi>();
 
 //         while (healthSlider == null)
