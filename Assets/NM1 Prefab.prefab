@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fee8e2efc369b746a0718e8239140ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 1500667777335600317}
   player: {fileID: 0}
   punchDamage: 10
   whatIsGround:
@@ -145,8 +145,8 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 2
   timeBetweenAttacks: 0.5
-  sightRange: 10
-  attackRange: 3
+  sightRange: 20
+  attackRange: 10
   playerInSightRange: 0
   playerInAttackRange: 0
   currentSquareColour: 0
