@@ -269,9 +269,9 @@ MonoBehaviour:
     m_Bits: 64
   health: 120
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 2
+  walkPointRange: 4
   timeBetweenAttacks: 0.5
-  sightRange: 5
+  sightRange: 10
   attackRange: 3
   playerInSightRange: 0
   playerInAttackRange: 0
