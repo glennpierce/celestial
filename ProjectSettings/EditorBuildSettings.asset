@@ -26,16 +26,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Character and Animations/Scenes/Scenes/Inventory.unity
     guid: c2fc05e86c63991439bc014f8e2ec76e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Character and Animations/Scenes/Scenes/Tutorial.unity
     guid: cc242e78f43add8408f50c42000e8127
-  - enabled: 0
+  - enabled: 1
     path: Assets/Character and Animations/Scenes/Scenes/Chess Board.unity
     guid: ec36182e5fe80e74bb1c5171c3599492
-  - enabled: 0
+  - enabled: 1
     path: Assets/Character and Animations/Scenes/Scenes/Title.unity
     guid: 3825482d3c3ff604c9e1b8c1a7329c52
-  - enabled: 0
+  - enabled: 1
     path: Assets/Character and Animations/Scenes/Scenes/CelestialFail.unity
     guid: 11121e42efa78124092d2e5fab54f4fe
   - enabled: 1
