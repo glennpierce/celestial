@@ -105,6 +105,67 @@ public class SpawnManager : MonoBehaviour
         return randomPoint;
     }
 
+    // Vector3 FindRandomPointOnFloor()
+    // {
+    //     Vector3 randomPoint = Vector3.zero;
+
+    //     RaycastHit hit;
+    //     if (Physics.Raycast(player.position, Vector3.down, out hit, raycastDistance, floorLayer))
+    //     {
+    //         // Detected the floor, now adjust the height based on terrain unevenness
+    //         randomPoint = hit.point;
+
+    //         // Optionally, you can further adjust the height by casting another ray downwards
+    //         RaycastHit terrainHit;
+    //         if (Physics.Raycast(randomPoint + Vector3.up * 10f, Vector3.down, out terrainHit, 20f, floorLayer))
+    //         {
+    //             randomPoint = terrainHit.point;
+    //         }
+    //     }
+    //     else
+    //     {
+    //         // Fallback to player's position if floor not detected
+    //         randomPoint = player.position;
+    //     }
+
+    //     // Apply random offsets within the specified range
+    //     float offsetX = Random.Range(-maxDistanceFromPlayer, maxDistanceFromPlayer);
+    //     float offsetZ = Random.Range(-maxDistanceFromPlayer, maxDistanceFromPlayer);
+
+    //     randomPoint += new Vector3(offsetX, 0f, offsetZ); // Only apply horizontal offset
+
+    //     return randomPoint;
+    // }
+
+    // Vector3 FindRandomPointOnFloor()
+    // {
+    //     Vector3 randomPoint = Vector3.zero;
+
+    //     // Calculate random point in the vicinity of the player
+    //     float offsetX = Random.Range(-maxDistanceFromPlayer, maxDistanceFromPlayer);
+    //     float offsetZ = Random.Range(-maxDistanceFromPlayer, maxDistanceFromPlayer);
+    //     Vector3 potentialPoint = player.position + new Vector3(offsetX, 50, offsetZ); // Start from above
+
+    //     RaycastHit hit;
+    //     // Cast a ray downward from the calculated point to find the actual ground
+    //     if (Physics.Raycast(potentialPoint, Vector3.down, out hit, 100, floorLayer))
+    //     {
+    //         randomPoint = hit.point;
+    //     }
+    //     else
+    //     {
+    //         Debug.DrawRay(potentialPoint, Vector3.down * 100, Color.red, 5.0f);
+    //         Debug.Log("No ground found for spawning at " + potentialPoint);
+    //         return player.position; // Fallback to player position
+    //     }
+
+    //     // Draw a debug line (visible in Scene view in Unity)
+    //     Debug.DrawLine(potentialPoint, randomPoint, Color.green, 5.0f);
+
+    //     return randomPoint;
+    // }
+
+
     // Method to check if all enemies have been spawned
     public bool AllEnemiesSpawned()
     {
