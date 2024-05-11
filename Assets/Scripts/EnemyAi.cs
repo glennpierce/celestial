@@ -39,6 +39,9 @@ public class EnemyAi : MonoBehaviour
     {
         // player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
+
+        Debug.Log("CHEP agent:" + agent);
+
         animator = GetComponent<Animator>();
 
         healthSlider = this.GetComponentInParent<Slider>();
