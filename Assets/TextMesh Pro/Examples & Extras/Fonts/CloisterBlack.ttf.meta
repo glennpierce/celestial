@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 70e3eb2114eec6e4882ea9a99e3e5126
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Cloister Black
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b61d241139300ac498881a7d119fac20, type: 3}
+  - {fileID: 12800000, guid: 315af1f6bdf7e514dbdd0e6c997a4ad1, type: 3}
+  - {fileID: 12800000, guid: d54d724d92a9baf4aafefbbdbfd79227, type: 3}
+  - {fileID: 12800000, guid: ecb25e10600214f418c044988f0ee94c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
