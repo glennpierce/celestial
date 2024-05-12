@@ -14,6 +14,14 @@ public class EnemyHealth : MonoBehaviour
     public float incrementAmount = 1.0f;
     public float delayBeforeDestroy = 2.0f; // Delay in seconds before destroying the enemy game object
 
+    // Define delegate type for the event
+    public delegate void EnemyDeathEventHandler();
+
+    // Declare event of the delegate type
+    public event EnemyDeathEventHandler OnEnemyDeath;
+
+    private bool dead = false;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -48,8 +56,16 @@ public class EnemyHealth : MonoBehaviour
 
     public void Die()
     {
+        if(dead) {
+            return;
+        }
+
+        dead = true;
+
         if (deathParticlesPrefab != null)
         {
+            OnEnemyDeath?.Invoke();
+
             GameObject particlesInstance = Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
             particlesInstance.transform.parent = transform.parent;
 

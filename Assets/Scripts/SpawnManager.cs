@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -12,10 +14,20 @@ public class SpawnManager : MonoBehaviour
     public float raycastDistance = 100f; // Maximum distance to cast ray for floor detection
     public int maxEnemies = 20; // Maximum number of enemies
 
+    // Event to be invoked when all enemies are defeated
+    public UnityEvent onAllEnemiesDefeated;
+
+    // Property indicating the next scene
+    [SerializeField]
+    public string nextSceneName;
+
+    ScreenFader fadeScr;
+    
     private Transform player; // Reference to the player's transform
     [SerializeField] public Slider healthSlider;
 
     private int currentEnemyCount = 0; // Current number of enemies
+    private int numberofEnemyKills = 0;
 
     void Start()
     {
@@ -23,6 +35,8 @@ public class SpawnManager : MonoBehaviour
 
         // Start spawning enemies
         StartCoroutine(FindPlayerAndSpawnEnemies());
+
+        fadeScr = GameObject.FindObjectOfType<ScreenFader>();
     }
 
     IEnumerator FindPlayerAndSpawnEnemies()
@@ -70,14 +84,15 @@ public class SpawnManager : MonoBehaviour
                     enemyAI.player = player;
                 }
 
-                EnemyHealth heath = newEnemy.GetComponentInChildren<EnemyHealth>();
+                EnemyHealth health = newEnemy.GetComponentInChildren<EnemyHealth>();
 
                 // Debug.Log("EnemyHealth: " + heath);
 
-                if (heath != null)
+                if (health != null)
                 {
-                    Debug.Log("Setting heath: " + heath + "  healthSlider: " + healthSlider);
-                    heath.healthSlider = healthSlider;
+                    Debug.Log("Setting heath: " + health + "  healthSlider: " + healthSlider);
+                    health.healthSlider = healthSlider;
+                    health.OnEnemyDeath += HandleEnemyDeath; // Subscribe to enemy death event
                 }
 
                 // Increase the current enemy count
@@ -105,9 +120,101 @@ public class SpawnManager : MonoBehaviour
         return randomPoint;
     }
 
-    // Method to check if all enemies have been spawned
-    public bool AllEnemiesSpawned()
+    // Vector3 FindRandomPointOnFloor()
+    // {
+    //     Vector3 randomPoint = Vector3.zero;
+
+    //     RaycastHit hit;
+    //     if (Physics.Raycast(player.position, Vector3.down, out hit, raycastDistance, floorLayer))
+    //     {
+    //         // Detected the floor, now adjust the height based on terrain unevenness
+    //         randomPoint = hit.point;
+
+    //         // Optionally, you can further adjust the height by casting another ray downwards
+    //         RaycastHit terrainHit;
+    //         if (Physics.Raycast(randomPoint + Vector3.up * 10f, Vector3.down, out terrainHit, 20f, floorLayer))
+    //         {
+    //             randomPoint = terrainHit.point;
+    //         }
+    //     }
+    //     else
+    //     {
+    //         // Fallback to player's position if floor not detected
+    //         randomPoint = player.position;
+    //     }
+
+    //     // Apply random offsets within the specified range
+    //     float offsetX = Random.Range(-maxDistanceFromPlayer, maxDistanceFromPlayer);
+    //     float offsetZ = Random.Range(-maxDistanceFromPlayer, maxDistanceFromPlayer);
+
+    //     randomPoint += new Vector3(offsetX, 0f, offsetZ); // Only apply horizontal offset
+
+    //     return randomPoint;
+    // }
+
+    // Vector3 FindRandomPointOnFloor()
+    // {
+    //     Vector3 randomPoint = Vector3.zero;
+
+    //     // Calculate random point in the vicinity of the player
+    //     float offsetX = Random.Range(-maxDistanceFromPlayer, maxDistanceFromPlayer);
+    //     float offsetZ = Random.Range(-maxDistanceFromPlayer, maxDistanceFromPlayer);
+    //     Vector3 potentialPoint = player.position + new Vector3(offsetX, 50, offsetZ); // Start from above
+
+    //     RaycastHit hit;
+    //     // Cast a ray downward from the calculated point to find the actual ground
+    //     if (Physics.Raycast(potentialPoint, Vector3.down, out hit, 100, floorLayer))
+    //     {
+    //         randomPoint = hit.point;
+    //     }
+    //     else
+    //     {
+    //         Debug.DrawRay(potentialPoint, Vector3.down * 100, Color.red, 5.0f);
+    //         Debug.Log("No ground found for spawning at " + potentialPoint);
+    //         return player.position; // Fallback to player position
+    //     }
+
+    //     // Draw a debug line (visible in Scene view in Unity)
+    //     Debug.DrawLine(potentialPoint, randomPoint, Color.green, 5.0f);
+
+    //     return randomPoint;
+    // }
+
+
+    // Method to handle enemy death
+    private void HandleEnemyDeath()
     {
-        return currentEnemyCount >= maxEnemies;
+        currentEnemyCount--;
+        numberofEnemyKills++;
+
+        // Check if all enemies are defeated
+        if (AllEnemiesKilled())
+        {
+            Debug.LogError("ALL ENEMIES KILLED");
+
+            // Invoke the event when all enemies are defeated
+            onAllEnemiesDefeated.Invoke();
+
+            // Transition to the next scene
+            if (!string.IsNullOrEmpty(nextSceneName))
+            {
+                //SceneManager.LoadScene(nextSceneName);
+
+                fadeScr.EndScene(nextSceneName);
+
+            }
+        }
+    }
+
+    // Method to check if all enemies have been spawned
+    // public bool AllEnemiesSpawned()
+    // {
+    //     return currentEnemyCount >= maxEnemies;
+    // }
+
+    public bool AllEnemiesKilled()
+    {
+         Debug.LogError("numberofEnemyKills:" + numberofEnemyKills + " maxEnemies:" + maxEnemies);
+         return numberofEnemyKills >= maxEnemies;
     }
 }
