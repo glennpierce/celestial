@@ -44,6 +44,8 @@ public class EnemyAi : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
+        Debug.Log("animator FOUNDt:" + animator);
+
         healthSlider = this.GetComponentInParent<Slider>();
 
         Debug.Log("healthSlider=" + healthSlider);
@@ -105,6 +107,8 @@ public class EnemyAi : MonoBehaviour
 
     private void ChasePlayer()
     {
+        Debug.Log("Error NAV Mesh : " + agent.isActiveAndEnabled );
+
         agent.SetDestination(player.position);
         // Debug.Log("Chasing Player");
         animator.SetTrigger("Chase");
@@ -117,6 +121,7 @@ public class EnemyAi : MonoBehaviour
 
         transform.LookAt(player);
 
+        Debug.Log("Setting Attack Trigger");
         animator.SetTrigger("Attack");
 
         if (!alreadyAttacked)
