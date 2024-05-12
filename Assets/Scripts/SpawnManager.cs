@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -17,7 +18,10 @@ public class SpawnManager : MonoBehaviour
     public UnityEvent onAllEnemiesDefeated;
 
     // Property indicating the next scene
-     public string nextSceneName;
+    [SerializeField]
+    public string nextSceneName;
+
+    ScreenFader fadeScr;
     
     private Transform player; // Reference to the player's transform
     [SerializeField] public Slider healthSlider;
@@ -31,6 +35,8 @@ public class SpawnManager : MonoBehaviour
 
         // Start spawning enemies
         StartCoroutine(FindPlayerAndSpawnEnemies());
+
+        fadeScr = GameObject.FindObjectOfType<ScreenFader>();
     }
 
     IEnumerator FindPlayerAndSpawnEnemies()
@@ -188,6 +194,15 @@ public class SpawnManager : MonoBehaviour
 
             // Invoke the event when all enemies are defeated
             onAllEnemiesDefeated.Invoke();
+
+            // Transition to the next scene
+            if (!string.IsNullOrEmpty(nextSceneName))
+            {
+                //SceneManager.LoadScene(nextSceneName);
+
+                fadeScr.EndScene(nextSceneName);
+
+            }
         }
     }
 
