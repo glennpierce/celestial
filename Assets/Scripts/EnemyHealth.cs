@@ -20,6 +20,8 @@ public class EnemyHealth : MonoBehaviour
     // Declare event of the delegate type
     public event EnemyDeathEventHandler OnEnemyDeath;
 
+    private bool dead = false;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -54,6 +56,12 @@ public class EnemyHealth : MonoBehaviour
 
     public void Die()
     {
+        if(dead) {
+            return;
+        }
+
+        dead = true;
+
         if (deathParticlesPrefab != null)
         {
             OnEnemyDeath?.Invoke();

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -12,10 +13,17 @@ public class SpawnManager : MonoBehaviour
     public float raycastDistance = 100f; // Maximum distance to cast ray for floor detection
     public int maxEnemies = 20; // Maximum number of enemies
 
+    // Event to be invoked when all enemies are defeated
+    public UnityEvent onAllEnemiesDefeated;
+
+    // Property indicating the next scene
+     public string nextSceneName;
+    
     private Transform player; // Reference to the player's transform
     [SerializeField] public Slider healthSlider;
 
     private int currentEnemyCount = 0; // Current number of enemies
+    private int numberofEnemyKills = 0;
 
     void Start()
     {
@@ -70,14 +78,15 @@ public class SpawnManager : MonoBehaviour
                     enemyAI.player = player;
                 }
 
-                EnemyHealth heath = newEnemy.GetComponentInChildren<EnemyHealth>();
+                EnemyHealth health = newEnemy.GetComponentInChildren<EnemyHealth>();
 
                 // Debug.Log("EnemyHealth: " + heath);
 
-                if (heath != null)
+                if (health != null)
                 {
-                    Debug.Log("Setting heath: " + heath + "  healthSlider: " + healthSlider);
-                    heath.healthSlider = healthSlider;
+                    Debug.Log("Setting heath: " + health + "  healthSlider: " + healthSlider);
+                    health.healthSlider = healthSlider;
+                    health.OnEnemyDeath += HandleEnemyDeath; // Subscribe to enemy death event
                 }
 
                 // Increase the current enemy count
@@ -166,9 +175,31 @@ public class SpawnManager : MonoBehaviour
     // }
 
 
-    // Method to check if all enemies have been spawned
-    public bool AllEnemiesSpawned()
+    // Method to handle enemy death
+    private void HandleEnemyDeath()
     {
-        return currentEnemyCount >= maxEnemies;
+        currentEnemyCount--;
+        numberofEnemyKills++;
+
+        // Check if all enemies are defeated
+        if (AllEnemiesKilled())
+        {
+            Debug.LogError("ALL ENEMIES KILLED");
+
+            // Invoke the event when all enemies are defeated
+            onAllEnemiesDefeated.Invoke();
+        }
+    }
+
+    // Method to check if all enemies have been spawned
+    // public bool AllEnemiesSpawned()
+    // {
+    //     return currentEnemyCount >= maxEnemies;
+    // }
+
+    public bool AllEnemiesKilled()
+    {
+         Debug.LogError("numberofEnemyKills:" + numberofEnemyKills + " maxEnemies:" + maxEnemies);
+         return numberofEnemyKills >= maxEnemies;
     }
 }
