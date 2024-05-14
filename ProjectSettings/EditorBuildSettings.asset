@@ -39,6 +39,6 @@ EditorBuildSettings:
     path: Assets/Character and Animations/Scenes/Scenes/CelestialFail.unity
     guid: 11121e42efa78124092d2e5fab54f4fe
   - enabled: 1
-    path: Assets/Scenes/Castle Scence.unity
+    path: Assets/Scenes/Castle Scene.unity
     guid: 4aa16508e5215714c86c2fa159ab04c2
   m_configObjects: {}
