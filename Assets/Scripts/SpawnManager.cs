@@ -17,6 +17,8 @@ public class SpawnManager : MonoBehaviour
     // Event to be invoked when all enemies are defeated
     public UnityEvent onAllEnemiesDefeated;
 
+    private InventoryManager inventoryManager;
+
     // Property indicating the next scene
     [SerializeField]
     public string nextSceneName;
@@ -37,6 +39,11 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine(FindPlayerAndSpawnEnemies());
 
         fadeScr = GameObject.FindObjectOfType<ScreenFader>();
+
+        // Find the InventoryManager GameObject in the scene
+        inventoryManager = GameObject.FindObjectOfType<InventoryManager>();
+
+        // inventoryManager.SetPawnCountText(0);
     }
 
     IEnumerator FindPlayerAndSpawnEnemies()
@@ -186,6 +193,17 @@ public class SpawnManager : MonoBehaviour
     {
         currentEnemyCount--;
         numberofEnemyKills++;
+
+        if(enemyPrefab.tag == "EnemyPawn") {
+            inventoryManager.SetPawnCountText(numberofEnemyKills);
+        }
+        else if(enemyPrefab.tag == "NM1") {
+            inventoryManager.SetNMCountText(numberofEnemyKills);
+        }
+
+        // instance.SetPawnCountText(0);
+        //     instance.SetNMCountText(0);
+        //     instance.SetCoinCountText(0);
 
         // Check if all enemies are defeated
         if (AllEnemiesKilled())

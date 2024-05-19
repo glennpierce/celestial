@@ -121,7 +121,7 @@ public class EnemyAi : MonoBehaviour
 
         transform.LookAt(player);
 
-        Debug.Log("Setting Attack Trigger");
+        Debug.Log("Setting Attack Trigger:" + animator);
         animator.SetTrigger("Attack");
 
         if (!alreadyAttacked)
