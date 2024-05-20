@@ -697,9 +697,9 @@
      <Compile Include="Assets\PlayMaker\Actions\Tween\BaseActions\TweenEnums.cs" />
      <Compile Include="Assets\PlayMaker\Actions\Physics2D\SetIsKinematic2d.cs" />
      <Compile Include="Assets\PlayMaker\Actions\Vector3\SelectRandomVector3.cs" />
+     <Compile Include="Assets\Scripts\GizmoDrawer.cs" />
      <Compile Include="Assets\PlayMaker\Actions\GUI\SetMouseCursor.cs" />
      <Compile Include="Assets\PlayMaker\Actions\Math\IntClamp.cs" />
-     <Compile Include="Assets\Scripts\GizmoDrawer.cs" />
      <Compile Include="Assets\PlayMaker\Actions\StateMachine\GetFsmVector2.cs" />
      <Compile Include="Assets\PlayMaker\Actions\Math\FloatAbs.cs" />
      <Compile Include="Assets\PlayMaker\Actions\VideoPlayer\VideoPlayerGetTargetTexture.cs" />
