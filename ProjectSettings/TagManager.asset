@@ -12,6 +12,7 @@ TagManager:
   - PlayerDamageColliderTag
   - HealthSlider
   - NM1
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - UI
   - Player
   - Main Cam
-  - 
+  - Wall
   - 
   - 
   - 

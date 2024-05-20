@@ -40,31 +40,13 @@ public class EnemyAi : MonoBehaviour
         // player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
 
-        Debug.Log("CHEP agent:" + agent);
-
         animator = GetComponent<Animator>();
 
-        Debug.Log("animator FOUNDt:" + animator);
-
         healthSlider = this.GetComponentInParent<Slider>();
-
-        Debug.Log("healthSlider=" + healthSlider);
-
-// EnemyPawnAi enemy = other.GetComponentInParent<EnemyPawnAi>();
-
-//         while (healthSlider == null)
-//         {
-//             // healthSlider = GameObject.Fi GetComponentInParent<Slider>("HealthSlider");
-//             healthSlider = this.GetComponentInParent<Slider>();
-//             yield return null; // Wait for the next frame
-//         }
     }
 
     private void Update()
     {
-        // Debug.Log("sightRange:" + sightRange);
-        // Debug.Log("attackRange:" + attackRange);
-
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -92,11 +74,21 @@ public class EnemyAi : MonoBehaviour
         }
     }
 
+    private Vector3 GetPosition() {
+
+        //update the position
+        Vector3 position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
+        return position;
+    }
+
     private void SearchWalkPoint()
     {
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+        Vector3 position = GetPosition();
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
@@ -117,7 +109,7 @@ public class EnemyAi : MonoBehaviour
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
+        //agent.SetDestination(transform.position);
 
         transform.LookAt(player);
 

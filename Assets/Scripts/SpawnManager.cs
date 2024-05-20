@@ -194,12 +194,23 @@ public class SpawnManager : MonoBehaviour
         currentEnemyCount--;
         numberofEnemyKills++;
 
+        Debug.LogError("gg:" + enemyPrefab.tag);
         if(enemyPrefab.tag == "EnemyPawn") {
             inventoryManager.SetPawnCountText(numberofEnemyKills);
         }
-        else if(enemyPrefab.tag == "NM1") {
+        // else if(enemyPrefab.tag == "NM1") {
+        //     inventoryManager.SetNMCountText(numberofEnemyKills);
+        // }
+        // else if(enemyPrefab.tag == "Boss") {
+        //     inventoryManager.SetNMCountText(numberofEnemyKills);
+        // }
+        else {
             inventoryManager.SetNMCountText(numberofEnemyKills);
         }
+
+        inventoryManager.IncrementCoinCountText();
+
+        // inventoryManager.SetPawnCountText(numberofEnemyKills);
 
         // instance.SetPawnCountText(0);
         //     instance.SetNMCountText(0);
@@ -232,7 +243,7 @@ public class SpawnManager : MonoBehaviour
 
     public bool AllEnemiesKilled()
     {
-         Debug.LogError("numberofEnemyKills:" + numberofEnemyKills + " maxEnemies:" + maxEnemies);
+         // Debug.LogError("numberofEnemyKills:" + numberofEnemyKills + " maxEnemies:" + maxEnemies);
          return numberofEnemyKills >= maxEnemies;
     }
 }

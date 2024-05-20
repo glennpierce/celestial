@@ -158,5 +158,37 @@ public class InventoryManager : MonoBehaviour
             Debug.LogError("CoinCount Text component not found on InventoryManager");
         }
     }
+
+    public void IncrementCoinCountText()
+    {
+        // Access the Text component of the CoinCount entry in InventoryManager
+        Text coinCountText = this.canvas.GetComponentsInChildren<Text>(true)
+            .FirstOrDefault(text => text.name == "CoinCount");
+
+        // Check if the Text component is found
+        if (coinCountText != null)
+        {
+            // Parse the current count from the text
+            if (int.TryParse(coinCountText.text, out int currentCount))
+            {
+                // Increment the count
+                currentCount++;
+
+                // Set the text of the CoinCount entry
+                coinCountText.text = currentCount.ToString();
+            }
+            else
+            {
+                // Log an error if parsing fails
+                Debug.LogError("Failed to parse CoinCount text: " + coinCountText.text);
+            }
+        }
+        else
+        {
+            // Log an error if the Text component is not found
+            Debug.LogError("CoinCount Text component not found on InventoryManager");
+        }
+    }
+
 }
 

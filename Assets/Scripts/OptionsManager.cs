@@ -67,6 +67,8 @@ public class OptionsManager : MonoBehaviour
         // Check if the 'O' key is pressed
         if (Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown("joystick button 7"))
         {
+            
+
             // Enable the Canvas component
             canvas.enabled = !canvas.enabled;
         }
@@ -75,19 +77,21 @@ public class OptionsManager : MonoBehaviour
     // Method to handle button click event
     void OnExitButtonClick()
     {
-        Debug.Log("Button clicked!");
+        Debug.LogError("EXIT Button clicked!");
         // Exit the application
         Application.Quit();
     }
 
     void OnMainMenuButtonClick()
     {
+       Debug.LogError("OnMainMenuButtonClick Button clicked!");
        SceneManager.LoadScene("Title");
     }
 
     // Method to handle slider value change event
     void OnVolumeSliderValueChanged(float value)
     {
+        Debug.LogError("OnVolumeSliderValueChanged");
         AudioListener.volume = volumeSlider.value;
     }
 

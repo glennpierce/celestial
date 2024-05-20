@@ -238,5 +238,32 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (other.CompareTag("NM1"))
+        {
+            // PlayerHealth playerHealth = this.GetComponent<PlayerHealth>();
+
+            // Debug.Log("playerHealth:" + playerHealth);
+
+            if (playerHealth != null)
+            {
+                //Debug.Log("Player Taking Damage punchDamage: " + punchDamage);
+                playerHealth.TakeDamage(punchDamage);
+            }
+        }
+
+        if (other.CompareTag("Boss"))
+        {
+            // PlayerHealth playerHealth = this.GetComponent<PlayerHealth>();
+
+            // Debug.Log("playerHealth:" + playerHealth);
+
+            if (playerHealth != null)
+            {
+                //Debug.Log("Player Taking Damage punchDamage: " + punchDamage);
+                playerHealth.TakeDamage(punchDamage);
+            }
+        }
+
+
     }
 }
