@@ -97,7 +97,7 @@ public class SpawnManager : MonoBehaviour
 
                 if (health != null)
                 {
-                    Debug.Log("Setting heath: " + health + "  healthSlider: " + healthSlider);
+                   // Debug.Log("Setting heath: " + health + "  healthSlider: " + healthSlider);
                     health.healthSlider = healthSlider;
                     health.OnEnemyDeath += HandleEnemyDeath; // Subscribe to enemy death event
                 }
@@ -194,7 +194,6 @@ public class SpawnManager : MonoBehaviour
         currentEnemyCount--;
         numberofEnemyKills++;
 
-        Debug.LogError("gg:" + enemyPrefab.tag);
         if(enemyPrefab.tag == "EnemyPawn") {
             inventoryManager.SetPawnCountText(numberofEnemyKills);
         }

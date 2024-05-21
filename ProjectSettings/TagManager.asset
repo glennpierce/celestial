@@ -13,6 +13,8 @@ TagManager:
   - HealthSlider
   - NM1
   - Boss
+  - EnemyGivingDamageArea
+  - EnemyLocation
   layers:
   - Default
   - TransparentFX

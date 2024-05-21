@@ -31,9 +31,9 @@ public class EnemyAi : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-    public BoardSquareProperties.Colour currentSquareColour;
-
     private Slider healthSlider; // Reference to the player's transform
+
+    public BoardSquareProperties.Colour CurrentChessSquareColour = BoardSquareProperties.Colour.Black;
 
     private void Awake()
     {
@@ -99,7 +99,7 @@ public class EnemyAi : MonoBehaviour
 
     private void ChasePlayer()
     {
-        Debug.Log("Error NAV Mesh : " + agent.isActiveAndEnabled );
+        // Debug.Log("Error NAV Mesh : " + agent.isActiveAndEnabled );
 
         agent.SetDestination(player.position);
         // Debug.Log("Chasing Player");
@@ -113,7 +113,7 @@ public class EnemyAi : MonoBehaviour
 
         transform.LookAt(player);
 
-        Debug.Log("Setting Attack Trigger:" + animator);
+        // Debug.Log("Setting Attack Trigger:" + animator);
         animator.SetTrigger("Attack");
 
         if (!alreadyAttacked)
@@ -147,10 +147,24 @@ public class EnemyAi : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 
+    // This is when objects enter the enemy not when enemy enters objects
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("EnemyPawnAi OnTriggerEnter this" + this +  " other: " + other + " this.currentSquareColour:" + this.currentSquareColour);   
+       // Debug.Log("EnemyPawnAi OnTriggerEnter this" + this +  " other: " + other + " this.currentSquareColour:" + this.currentSquareColour);   
 
+        //  Debug.LogError(other.tag);
+        // if (other.CompareTag("ChessBoardSquare")) {
+
+        //     BoardSquareProperties boardSquareProperties = other.GetComponent<BoardSquareProperties>();
+        //     Debug.LogError(boardSquareProperties.selectedColour);
+        // }
+
+
+
+         //Debug.LogError(this.CurrentChessSquareColour);
+
+
+        // Enemy Takes hit from player
         if (other.CompareTag("PlayerDamageColliderTag"))
         {
             /*
@@ -166,19 +180,58 @@ public class EnemyAi : MonoBehaviour
             }
             */
 
+
             // Access EnemyHealth component from the root GameObject
             // EnemyHealth enemyHealth = other.transform.root.GetComponent<EnemyHealth>();
             // EnemyPawnAi enemy = other.GetComponentInParent<EnemyPawnAi>();
-            EnemyHealth enemyHealth = this.GetComponent<EnemyHealth>();
+            // EnemyHealth enemyHealth = this.GetComponent<EnemyHealth>();
             // enemyHealth.healthSlider = this.healthSlider;
 
-            Debug.Log("EnemyPornAI OnTriggerEnter: " + this + " this.currentSquareColour: " + this.currentSquareColour);
+
+
+             // // if enenenemy.currentSquareColour == BoardSquareProperties.Colour.White)
+                // GameObject pawnEnemy = other.transform.FindWithTagInParents("EnemyPawn");
+                // if (pawnEnemy != null)
+                // {
+                //     EnemyAi enemy = pawnEnemy.GetComponentInParent<EnemyAi>();
+                //     if (enemy != null)
+                //     {
+                //         Debug.Log("SQUARE: " + enemy.currentSquareColour);
+                //     }
+
+                //      // Debug.LogError("pawnEnemy JJJJJJJJJJJJJJJJJJJJJJJJJ");
+                //      //if (pawnEnemy)
+                // }
+                // else {
+                //     //Debug.Log("Player Taking Damage punchDamage: " + punchDamage);
+                //     playerHealth.TakeDamage(punchDamage);
+                // }   
+
+            //Debug.Log("EnemyPornAI OnTriggerEnter: " + this + " this.currentSquareColour: " + this.currentSquareColour);
+
+
+            EnemyHealth enemyHealth = this.GetComponent<EnemyHealth>();
 
             // if (enemyHealth != null && this.currentSquareColour == BoardSquareProperties.Colour.White)
             if (enemyHealth != null)
             {
-                // enemyHealth.healthSlider = 
-                Debug.Log("Enemy Taking Damage " + "punchDamage: " + punchDamage);
+                // if (this.CompareTag("EnemyPawn")) {
+
+                //     EnemyAi enemy = this.GetComponentInParent<EnemyAi>();
+
+                //     if (enemy != null)
+                //     {
+                //          //Debug.LogError(enemy.CurrentChessSquareColour);
+                //          if(enemy.CurrentChessSquareColour == BoardSquareProperties.Colour.White) {
+                //             enemyHealth.TakeDamage(punchDamage);
+                //          }
+                //     }
+                   
+                // }
+                // else {
+                //     enemyHealth.TakeDamage(punchDamage);
+                // }
+
                 enemyHealth.TakeDamage(punchDamage);
             }
         }

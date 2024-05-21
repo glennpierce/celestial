@@ -69,14 +69,21 @@ public class EnemyHealth : MonoBehaviour
             GameObject particlesInstance = Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
             particlesInstance.transform.parent = transform.parent;
 
+            //Debug.LogError("particlesInstance:" + particlesInstance);
+            
+            //Debug.LogError("particlesInstance.GetComponent<ParticleSystem>():" + this.GetComponentInParent<ParticleSystem>());
+
             // Determine the duration of the particle system
-            float particleSystemDuration = particlesInstance.GetComponent<ParticleSystem>().main.duration;
+            float particleSystemDuration = this.GetComponentInParent<ParticleSystem>().main.duration;
+
+            
 
             // Start a coroutine to delay the destruction of the enemy game object
             StartCoroutine(DestroyAfterDelay(particleSystemDuration + delayBeforeDestroy));
         }
         else
         {
+           // Debug.Log("Destroying enemy: " + gameObject.name);
             Destroy(gameObject);
         }
     }
@@ -86,6 +93,7 @@ public class EnemyHealth : MonoBehaviour
         // Wait for the specified delay
         yield return new WaitForSeconds(delay);
 
+       // Debug.Log("Destroying enemy after delay : " + gameObject.name);
         // Destroy the enemy game object
         Destroy(gameObject);
     }

@@ -52,23 +52,21 @@ public class OptionsManager : MonoBehaviour
     {
 
         // Check each button on each controller
-        for (int i = 1; i <= 4; i++) // Assuming there are 4 controllers
-        {
-            for (int j = 0; j < 20; j++) // Assuming there are 20 buttons on each controller
-            {
-                string buttonName = "joystick " + i + " button " + j;
-                if (Input.GetKeyDown(buttonName))
-                {
-                    Debug.Log("Controller " + i + " Button " + j + " pressed");
-                }
-            }
-        }
+        // for (int i = 1; i <= 4; i++) // Assuming there are 4 controllers
+        // {
+        //     for (int j = 0; j < 20; j++) // Assuming there are 20 buttons on each controller
+        //     {
+        //         string buttonName = "joystick " + i + " button " + j;
+        //         if (Input.GetKeyDown(buttonName))
+        //         {
+        //             Debug.Log("Controller " + i + " Button " + j + " pressed");
+        //         }
+        //     }
+        // }
 
         // Check if the 'O' key is pressed
         if (Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown("joystick button 7"))
         {
-            
-
             // Enable the Canvas component
             canvas.enabled = !canvas.enabled;
         }
@@ -84,7 +82,7 @@ public class OptionsManager : MonoBehaviour
 
     void OnMainMenuButtonClick()
     {
-       Debug.LogError("OnMainMenuButtonClick Button clicked!");
+       // Debug.LogError("OnMainMenuButtonClick Button clicked!");
        SceneManager.LoadScene("Title");
     }
 
@@ -106,7 +104,7 @@ public class OptionsManager : MonoBehaviour
         // List to store resolution options
         List<string> options = new List<string>();
 
-        Debug.LogError("resolutions:" + resolutions);
+        // Debug.LogError("resolutions:" + resolutions);
 
         // Add each resolution option to the list
         foreach (var resolution in resolutions)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -293,6 +293,100 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &427807481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 427807482}
+  - component: {fileID: 427807485}
+  - component: {fileID: 427807484}
+  - component: {fileID: 427807483}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &427807482
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427807481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.9054492, y: 2.7878144, z: 2.7878144}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1349477583}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -379, y: -77}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &427807483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427807481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b01f5dac87b2b8747bcfe3f73b1483ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeSpeed: 1
+  startDelay: 35
+  fadeInDuration: 1
+  displayDuration: 5
+  fadeOutDuration: 1
+--- !u!114 &427807484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427807481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: fbe2b513122b2974487ce89b85214d1d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &427807485
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427807481}
+  m_CullTransparentMesh: 1
 --- !u!1 &485269183
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,6 +919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 30
+  creditsDuration: 90
 --- !u!114 &1083570165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,83 +940,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Audio
-
-
-    Tavern-Brawl
-
-    (Chosic.com)
-
-
-
-    Now We Ride
-
-    (Chosic.com)
-
-
-
-
-
-    Animation
-
-
-    Created
-    by Ehlana Pierce
-
-
-
-    The Prince
-
-
-
-    Run,Jump,Walk,Punch,
-
-    Death, Idle
-    and Block
-
-
-    (Mixamo.com)
-
-
-
-    NM1
-
-
-    Attack, Death, Idle and Run
-
-    (Mixamo.com)
-
-
-
-
-    NM2
-
-
-    Float,
-    Attack, Idle and Death
-
-    Created by Ehlana Pierce
-
-
-
-
-    Chess Piece
-
-
-    Jump,
-    Attack,Death, Walk,Idle
-
-    Created by Ehlana Pierce
-
-
-
-
-
-
-
-
-
-    hnrfsdzhyreau'
+  m_text: "Produced by \nEhlana Pierce \n\nAudio\n\nTavern-Brawl\n(Chosic.com)\n\n\nNow
+    We Ride\n(Chosic.com)\n\n\nThe Old Tavern\n[Chosic.com]\n\nAnimation\n\nCreated
+    by Ehlana Pierce\n\n\nThe Prince\n\n\nRun,Jump,Walk,Punch,\nDeath, Idle and Block\n\n(Mixamo.com)\n\n\nNM1\n\nAttack,
+    Death, Idle and Run\n(Mixamo.com)\n\n\n\nNM2\n\nFloat, Attack, Idle and Death\nCreated
+    by Ehlana Pierce\n\n\n\nChess Piece\n\nJump, Attack,Death, Walk,Idle\nCreated
+    by Ehlana Pierce\n\n\n\n\n\nProduced and Created\nby Ehlana Pierce\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5953255384ba9bc4a92484d8042e479c, type: 2}
   m_sharedMaterial: {fileID: -1770718411598782378, guid: 5953255384ba9bc4a92484d8042e479c, type: 2}
@@ -1285,6 +1309,7 @@ RectTransform:
   - {fileID: 1445855655}
   - {fileID: 577240086}
   - {fileID: 1713454182}
+  - {fileID: 427807482}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1513,7 +1538,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

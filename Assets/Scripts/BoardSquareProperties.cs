@@ -28,10 +28,14 @@ public class BoardSquareProperties : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyPawn"))
+        //Debug.LogError("pooooo" + other.tag);
+
+        if (other.CompareTag("EnemyPawn") || other.CompareTag("EnemyLocation"))
         {
-            EnemyAi enemy = other.GetComponent<EnemyAi>();
-            enemy.currentSquareColour = this.selectedColour;
+            EnemyAi enemy = other.GetComponentInParent<EnemyAi>();
+           // Debug.LogError("EnemyAi" + enemy);
+            enemy.CurrentChessSquareColour = this.selectedColour;
+            //Debug.LogError("enemy.CurrentChessSquareColour:" + enemy.CurrentChessSquareColour);
         }
     }
 

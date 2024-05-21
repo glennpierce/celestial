@@ -34,7 +34,7 @@ public class SceneTransitionManager : MonoBehaviour
     private void LoadFailSceneWithFadeIn()
     {
         // Load the "CelestialFail" scene
-        SceneManager.LoadScene("CelestialFail", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Celestial Fail", LoadSceneMode.Additive);
 
         // Find the fade panel GameObject in the loaded scene
         fadePanel = GameObject.Find(fadePanelName);

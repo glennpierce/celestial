@@ -1,6 +1,34 @@
 using UnityEngine;
 using System.Collections;
 
+public static class TransformExtensions
+{
+    // This method extends Transform and allows you to call it on any Transform object.
+    public static GameObject FindWithTagInParents(this Transform childTransform, string tag)
+    {
+        Transform current = childTransform;
+
+        // Loop until you either find a tagged parent or there are no more parents.
+        while (current != null)
+        {
+            // Debug.LogError("current: " + current + "  tag:" + tag);
+
+            // Check if the current GameObject has the specified tag.
+            if (current.CompareTag(tag))
+            {
+                return current.gameObject;
+            }
+
+            // Move to the next parent in the hierarchy.
+            current = current.parent;
+        }
+
+        // Return null if no GameObject with the specified tag was found.
+        return null;
+    }
+}
+
+
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
@@ -176,11 +204,13 @@ public class PlayerController : MonoBehaviour
         if (randomIndex == 0)
         {
             //Debug.Log("Left Punch");
+            Debug.LogError("animator.SetTrigger Left Punch");
             animator.SetTrigger("LeftPunch");
         }
         else
         {
             //Debug.Log("Right Punch");
+            Debug.LogError("animator.SetTrigger Right Punch");
             animator.SetTrigger("RightPunch");
         }
 
@@ -223,9 +253,9 @@ public class PlayerController : MonoBehaviour
         */
 
 
-        Debug.Log("Player OnTrigger other: " + other);
+        // Debug.Log("Player OnTrigger other: " + other);
 
-        if (other.CompareTag("EnemyPawnHead"))
+        if (other.CompareTag("EnemyGivingDamageArea"))
         {
             // PlayerHealth playerHealth = this.GetComponent<PlayerHealth>();
 
@@ -233,36 +263,66 @@ public class PlayerController : MonoBehaviour
 
             if (playerHealth != null)
             {
-                //Debug.Log("Player Taking Damage punchDamage: " + punchDamage);
                 playerHealth.TakeDamage(punchDamage);
+
+                // // if enenenemy.currentSquareColour == BoardSquareProperties.Colour.White)
+                // GameObject pawnEnemy = other.transform.FindWithTagInParents("EnemyPawn");
+                // if (pawnEnemy != null)
+                // {
+                //     EnemyAi enemy = pawnEnemy.GetComponentInParent<EnemyAi>();
+                //     if (enemy != null)
+                //     {
+                //         Debug.Log("SQUARE: " + enemy.currentSquareColour);
+                //     }
+
+                //      // Debug.LogError("pawnEnemy JJJJJJJJJJJJJJJJJJJJJJJJJ");
+                //      //if (pawnEnemy)
+                // }
+                // else {
+                //     //Debug.Log("Player Taking Damage punchDamage: " + punchDamage);
+                //     playerHealth.TakeDamage(punchDamage);
+                // }   
             }
         }
 
-        if (other.CompareTag("NM1"))
-        {
-            // PlayerHealth playerHealth = this.GetComponent<PlayerHealth>();
+        // if (other.CompareTag("EnemyPawnHead"))
+        // {
+        //     // PlayerHealth playerHealth = this.GetComponent<PlayerHealth>();
 
-            // Debug.Log("playerHealth:" + playerHealth);
+        //     // Debug.Log("playerHealth:" + playerHealth);
 
-            if (playerHealth != null)
-            {
-                //Debug.Log("Player Taking Damage punchDamage: " + punchDamage);
-                playerHealth.TakeDamage(punchDamage);
-            }
-        }
+        //     if (playerHealth != null)
+        //     {
+        //         //Debug.Log("Player Taking Damage punchDamage: " + punchDamage);
+        //         playerHealth.TakeDamage(punchDamage);
+        //     }
+        // }
 
-        if (other.CompareTag("Boss"))
-        {
-            // PlayerHealth playerHealth = this.GetComponent<PlayerHealth>();
+        // if (other.CompareTag("NM1"))
+        // {
+        //     // PlayerHealth playerHealth = this.GetComponent<PlayerHealth>();
 
-            // Debug.Log("playerHealth:" + playerHealth);
+        //     // Debug.Log("playerHealth:" + playerHealth);
 
-            if (playerHealth != null)
-            {
-                //Debug.Log("Player Taking Damage punchDamage: " + punchDamage);
-                playerHealth.TakeDamage(punchDamage);
-            }
-        }
+        //     if (playerHealth != null)
+        //     {
+        //         //Debug.Log("Player Taking Damage punchDamage: " + punchDamage);
+        //         playerHealth.TakeDamage(punchDamage);
+        //     }
+        // }
+
+        // if (other.CompareTag("Boss"))
+        // {
+        //     // PlayerHealth playerHealth = this.GetComponent<PlayerHealth>();
+
+        //     // Debug.Log("playerHealth:" + playerHealth);
+
+        //     if (playerHealth != null)
+        //     {
+        //         //Debug.Log("Player Taking Damage punchDamage: " + punchDamage);
+        //         playerHealth.TakeDamage(punchDamage);
+        //     }
+        // }
 
 
     }
