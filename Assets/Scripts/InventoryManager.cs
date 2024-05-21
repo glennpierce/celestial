@@ -73,6 +73,13 @@ public class InventoryManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void ResetInventory()
+    {
+        instance.SetPawnCountText(0);
+        instance.SetNMCountText(0);
+        instance.SetCoinCountText(0);
+    }
+
     void Start()
     {
 

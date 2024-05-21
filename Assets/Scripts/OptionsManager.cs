@@ -14,15 +14,61 @@ public class OptionsManager : MonoBehaviour
     // Reference to the Canvas component
     private Canvas canvas;
 
+    public static OptionsManager instance;
+
+    private void Awake()
+    {
+        bool created = false;
+        
+        // Check if an instance already exists
+        if (instance == null)
+        {
+            // If not, set the instance to this
+            instance = this;
+            created = true;
+        }
+        else if (instance != this)
+        {
+            // If an instance already exists and it's not this, destroy this GameObject
+            Destroy(gameObject);
+            return;
+        }
+
+        // Get the Canvas component attached to this GameObject
+        canvas = GetComponent<Canvas>();
+
+        // Ensure the Canvas component exists
+        if (canvas != null)
+        {
+            // Disable the Canvas component
+            canvas.enabled = false;
+        }
+        else
+        {
+            // If the Canvas component is not found, log an error
+            Debug.LogError("Canvas component not found on GameObject: " + gameObject.name);
+        }
+
+        // Ensure that the InventoryManager GameObject persists between scenes
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void ResetOptions()
+    {
+        // instance.SetPawnCountText(0);
+        // instance.SetNMCountText(0);
+        // instance.SetCoinCountText(0);
+    }
+
     void Start()
     {
         // Get the Canvas component attached to this GameObject
-        canvas = GetComponent<Canvas>();
+        //canvas = GetComponent<Canvas>();
 
         // Debug.Log("HERY:" + canvas);
 
         // Disable the Canvas component
-        canvas.enabled = false;
+        //canvas.enabled = false;
 
         PopulateDropdown();
 

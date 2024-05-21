@@ -204,13 +204,13 @@ public class PlayerController : MonoBehaviour
         if (randomIndex == 0)
         {
             //Debug.Log("Left Punch");
-            Debug.LogError("animator.SetTrigger Left Punch");
+            //Debug.LogError("animator.SetTrigger Left Punch");
             animator.SetTrigger("LeftPunch");
         }
         else
         {
             //Debug.Log("Right Punch");
-            Debug.LogError("animator.SetTrigger Right Punch");
+            //Debug.LogError("animator.SetTrigger Right Punch");
             animator.SetTrigger("RightPunch");
         }
 

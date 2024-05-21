@@ -35,6 +35,15 @@ public class SpawnManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player GameObject and get its transform
 
+        // Find the GameObject with PlayerHealth script
+        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+
+        // Subscribe to the OnPlayerDeath event
+        if (playerHealth != null)
+        {
+            playerHealth.OnPlayerDeath += HandlePlayerDeath;
+        }
+
         // Start spawning enemies
         StartCoroutine(FindPlayerAndSpawnEnemies());
 
@@ -44,6 +53,21 @@ public class SpawnManager : MonoBehaviour
         inventoryManager = GameObject.FindObjectOfType<InventoryManager>();
 
         // inventoryManager.SetPawnCountText(0);
+    }
+
+    private void HandlePlayerDeath()
+    {
+        Debug.Log("SceneTransitionManager: Player DIED");
+
+        
+
+        // Delay the scene load
+        Invoke("LoadFailSceneWithFadeIn", 3);
+    }
+
+    private void LoadFailSceneWithFadeIn()
+    {
+        fadeScr.EndScene("Celestial Fail");
     }
 
     IEnumerator FindPlayerAndSpawnEnemies()
